@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Propositions d'icône</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Shippori+Mincho:wght@700;800&display=swap" />
+<style>
+  body { margin: 0; padding: 28px 20px 40px; background: #e9eae5; color: #16191a; font-family: Inter, system-ui, sans-serif; }
+  h1 { margin: 0 0 4px; font-size: 22px; }
+  p { margin: 0 0 22px; color: #4a504c; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 22px; max-width: 1000px; }
+  figure { margin: 0; background: #fff; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+  figure svg.big { width: 190px; height: 190px; border-radius: 22%; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18); }
+  .row { display: flex; align-items: center; gap: 12px; }
+  .row svg { width: 48px; height: 48px; border-radius: 22%; }
+  .row svg.round { border-radius: 50%; }
+  figcaption b { display: block; font-size: 16px; }
+  figcaption span { font-size: 13px; line-height: 1.45; color: #4a504c; }
+  .kanji { font-family: 'Shippori Mincho', 'Yu Mincho', 'Hiragino Mincho ProN', serif; font-weight: 800; }
+  .romaji { font-family: Inter, system-ui, sans-serif; font-weight: 700; letter-spacing: 3px; }
+</style>
+</head>
+<body>
+<h1>Icône « flèches de bambou » · variantes du sceau</h1>
+<p>Même cible, mêmes flèches, ombre retravaillée. Seuls le contenu et la place du sceau changent. En grand, puis à la taille d'un écran d'accueil.</p>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="flou" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2" /></filter>
+
+    <!-- La scène commune : fond, mato, ombres, deux flèches de bambou en perspective. -->
+    <g id="scene">
+      <rect width="512" height="512" fill="#F3F4F0" />
+      <g transform="translate(232 284) scale(1.36)">
+        <circle r="100" fill="#23282B" /><circle r="81.7" fill="#FFFFFF" /><circle r="65" fill="#23282B" />
+        <circle r="56.7" fill="#FFFFFF" /><circle r="40" fill="#23282B" /><circle r="20" fill="#FFFFFF" />
+      </g>
+      <!-- Ombres : une tige qui s'élargit en s'éloignant, puis la forme allongée de l'empennage. Floues et continues. -->
+      <g fill="#000000" fill-opacity="0.34" filter="url(#flou)">
+        <polygon points="234.8,286.8 237.2,285.2 298.9,374.1 293.1,377.9" />
+        <polygon points="267.1,332.7 281.3,337.7 300.2,366 296,376 285.2,376 266.3,347.7" />
+        <polygon points="298.8,330.8 301.2,329.2 356.7,409.2 351.3,412.8" />
+        <polygon points="328.5,372.7 341.3,377.5 357.9,402.4 354,411 344.5,411.2 327.9,386.3" />
+      </g>
+      <ellipse cx="236" cy="286" rx="7" ry="4.5" fill="#0E1011" />
+      <ellipse cx="300" cy="330" rx="7" ry="4.5" fill="#0E1011" />
+      <g stroke="#16191A" stroke-width="2.5" stroke-linejoin="round">
+        <polygon points="298.2,328.3 301.8,331.7 444.2,184.2 435.4,176" fill="#C99A4B" />
+        <polygon points="383.2,240.8 408.9,247 451.8,200.9 428.9,191.8" fill="#6B4423" />
+        <polygon points="383.2,240.8 375.3,215.6 418.2,169.5 428.9,191.8" fill="#8A5A30" />
+        <circle cx="442.5" cy="177.2" r="6" fill="#16191A" />
+      </g>
+      <g stroke="#16191A" stroke-width="2.5" stroke-linejoin="round">
+        <polygon points="234.2,284.3 237.8,287.7 404.8,114.4 395.2,105.6" fill="#C99A4B" />
+        <polygon points="337.3,177.3 365.8,184.7 413.5,133.5 387.7,123.2" fill="#6B4423" />
+        <polygon points="337.3,177.3 327.8,149.3 375.5,98.1 387.7,123.2" fill="#8A5A30" />
+        <circle cx="402.7" cy="107.1" r="7" fill="#16191A" />
+      </g>
+    </g>
+
+    <!-- Sceaux, centrés en (0, 0) -->
+    <g id="tKanji">
+      <rect x="-60" y="-60" width="120" height="120" rx="12" fill="#F3F4F0" fill-opacity="0.9" stroke="#B23A22" stroke-width="7" />
+      <text class="kanji" x="0" y="19" font-size="54" text-anchor="middle" fill="#B23A22">皆中</text>
+    </g>
+    <g id="tKanjiV">
+      <rect x="-40" y="-68" width="80" height="136" rx="12" fill="#F3F4F0" fill-opacity="0.9" stroke="#B23A22" stroke-width="7" />
+      <text class="kanji" x="0" y="-8" font-size="54" text-anchor="middle" fill="#B23A22">皆</text>
+      <text class="kanji" x="0" y="50" font-size="54" text-anchor="middle" fill="#B23A22">中</text>
+    </g>
+    <g id="tRomaji">
+      <rect x="-82" y="-34" width="164" height="68" rx="12" fill="#F3F4F0" fill-opacity="0.9" stroke="#B23A22" stroke-width="7" />
+      <text class="romaji" x="2" y="10" font-size="28" text-anchor="middle" fill="#B23A22">KAICHŪ</text>
+    </g>
+
+    <symbol id="v1" viewBox="0 0 512 512"><use href="#scene" /><use href="#tKanji" transform="translate(100 412) rotate(-8)" /></symbol>
+    <symbol id="v2" viewBox="0 0 512 512"><use href="#scene" /><use href="#tKanji" transform="translate(104 104) rotate(-8)" /></symbol>
+    <symbol id="v3" viewBox="0 0 512 512"><use href="#scene" /><use href="#tKanji" transform="translate(432 436) rotate(-8) scale(0.78)" /></symbol>
+    <symbol id="v4" viewBox="0 0 512 512"><use href="#scene" /><use href="#tKanjiV" transform="translate(84 112) rotate(-6)" /></symbol>
+    <symbol id="v5" viewBox="0 0 512 512"><use href="#scene" /><use href="#tRomaji" transform="translate(120 440) rotate(-8)" /></symbol>
+    <symbol id="v6" viewBox="0 0 512 512"><use href="#scene" /><use href="#tRomaji" transform="translate(122 84) rotate(-8)" /></symbol>
+  </defs>
+</svg>
+
+<div class="grid">
+  <figure>
+    <svg class="big"><use href="#v1" /></svg>
+    <div class="row"><svg><use href="#v1" /></svg><svg class="round"><use href="#v1" /></svg></div>
+    <figcaption><b>1 · Kanji, en bas à gauche</b><span>皆中 seul, à la place actuelle du sceau.</span></figcaption>
+  </figure>
+  <figure>
+    <svg class="big"><use href="#v2" /></svg>
+    <div class="row"><svg><use href="#v2" /></svg><svg class="round"><use href="#v2" /></svg></div>
+    <figcaption><b>2 · Kanji, en haut à gauche</b><span>Le sceau ne touche plus la cible.</span></figcaption>
+  </figure>
+  <figure>
+    <svg class="big"><use href="#v3" /></svg>
+    <div class="row"><svg><use href="#v3" /></svg><svg class="round"><use href="#v3" /></svg></div>
+    <figcaption><b>3 · Kanji, en bas à droite</b><span>Plus petit, au bout des ombres.</span></figcaption>
+  </figure>
+  <figure>
+    <svg class="big"><use href="#v4" /></svg>
+    <div class="row"><svg><use href="#v4" /></svg><svg class="round"><use href="#v4" /></svg></div>
+    <figcaption><b>4 · Kanji vertical, en haut à gauche</b><span>皆 au-dessus de 中, comme un sceau traditionnel.</span></figcaption>
+  </figure>
+  <figure>
+    <svg class="big"><use href="#v5" /></svg>
+    <div class="row"><svg><use href="#v5" /></svg><svg class="round"><use href="#v5" /></svg></div>
+    <figcaption><b>5 · Lettres romaines, en bas à gauche</b><span>« KAICHŪ » seul, dans un cartouche large.</span></figcaption>
+  </figure>
+  <figure>
+    <svg class="big"><use href="#v6" /></svg>
+    <div class="row"><svg><use href="#v6" /></svg><svg class="round"><use href="#v6" /></svg></div>
+    <figcaption><b>6 · Lettres romaines, en haut à gauche</b><span>Le même cartouche, hors de la cible.</span></figcaption>
+  </figure>
+</div>
+<p id="etat" style="margin-top: 22px"></p>
+<script>
+// Export de la variante 4 (kanji vertical, en haut à gauche) : ouvrir cette page avec ?export=1
+// pendant que scripts/recevoir-icones.mjs tourne. La police du sceau est intégrée au fichier.
+async function exporter() {
+  const etat = document.getElementById('etat');
+  const css = await fetch('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@800&text=' + encodeURIComponent('皆中')).then((r) => r.text());
+  const police = await fetch(css.match(/url\((https:[^)]+)\)/)[1]).then((r) => r.arrayBuffer());
+  const b64 = btoa(String.fromCharCode(...new Uint8Array(police)));
+  const piece = (id) => document.getElementById(id).outerHTML;
+  const dessin = `${piece('scene')}<g transform="translate(84 112) rotate(-6)">${piece('tKanjiV')}</g>`;
+  const svg = (contenu) =>
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><defs>${piece('flou')}<style>@font-face{font-family:'Sceau';src:url(data:font/woff2;base64,${b64}) format('woff2');font-weight:800}.kanji{font-family:'Sceau',serif;font-weight:800}</style></defs>${contenu}</svg>`;
+  const normal = svg(dessin);
+  // Version « maskable » : le dessin réduit à 80 % pour rester dans la zone que le téléphone ne rogne pas.
+  const masquable = svg(`<rect width="512" height="512" fill="#F3F4F0"/><g transform="translate(256 256) scale(0.8) translate(-256 -256)">${dessin}</g>`);
+
+  async function png(source, taille) {
+    const img = new Image();
+    img.src = URL.createObjectURL(new Blob([source], { type: 'image/svg+xml' }));
+    await img.decode();
+    await new Promise((r) => setTimeout(r, 300));
+    const c = Object.assign(document.createElement('canvas'), { width: taille, height: taille });
+    c.getContext('2d').drawImage(img, 0, 0, taille, taille);
+    return c.toDataURL('image/png');
+  }
+  const envoyer = (name, data) => fetch('http://localhost:5199/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name, data }) }).then((r) => r.text());
+
+  const res = [];
+  res.push(await envoyer('icon.svg', normal));
+  res.push(await envoyer('icon-192.png', await png(normal, 192)));
+  res.push(await envoyer('icon-512.png', await png(normal, 512)));
+  res.push(await envoyer('icon-maskable-512.png', await png(masquable, 512)));
+  etat.textContent = 'Export : ' + res.join(', ');
+}
+if (new URLSearchParams(location.search).has('export')) exporter().catch((e) => (document.getElementById('etat').textContent = 'Export impossible : ' + e));
+</script>
+</body>
+</html>

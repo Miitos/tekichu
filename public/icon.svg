@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><defs><filter id="flou" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2"></feGaussianBlur></filter><style>@font-face{font-family:'Sceau';src:url(data:font/woff2;base64,d09GMgABAAAAAAR0AA8AAAAAB/gAAAQeAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGx4cRAZgAEQRCAqFIIQ+CwwAATYCJAMUBCAFhFYHIBckGBQbhwbIxKDftJ9lF5KDulC15ESlKjGhCan739GTJ2LydcLENfkDJFaaRAObWXRQRNMmPNBxVAlMrM8HaluGVx3mTmSBABCRxvYgO3cfrIYRDLRa1x1eBfMMlLILk0lPQDXB2MRGwDzAaBJAWbbRm9KvqQwe4Ba4ekp6gIohrTCRUiDDCugWajQQcRR74O7qnSewFXLPDFX0OYDNEVnm4L0gP3LfKSYZlBVznViKJG48NkYYKi1GGIv98uGynpnV8IIE/eu7358fBuGt0UR0nWPrEt5hR6JwVvgN1pH0BgpWJab4LoxSSrcxllNWxViNIVIYiLBa7LZIi7XUZhk8felpafH113EmF+/XaO+JC2Q8k4iU9wZy7Yd1XI/ls/HaTfeJC6cIc+x4bY1Exmvfx1hcLiQPJ1GJk6i7l7mPQxNFPFi3J/69ak2Lq62rff/lelM7Xv2wpEYTF/Lve28nxpYlfEriYuLpOqnm+psx9tB7orjwwB0E1BDXAFUxqUAqCcPYHOBrsQ8z3o9Zu1aqIWH7sA8Z2jX1xxTbUWc3K/sWS+wl9pP2H9lsUswKqgLayq/mmNArGr5SfdwcPdiwNyktKQ7mtI9CpI93+bbLcqRkXM2cODr5YZzI0aT//kgMf9XIHyXHm0fCDi+tfSN2JOzw5ZlRNCRd+mZ6mvSh1Cd9JGHw5d3fLzDBcJuhIvHF6erh2JtSh7b+3rL21e4NE8HwO7vFbceinjUyVezemRpT2rb1Zl9bb1RUwp39GR+3Si8mVG+6Knr+8pRDIm3ZSyOTSqrDD3VU6gkFtyvitpn0CGr5eeP9K9+aZcKunwxPLPu5BXqgYWdiSlIc1iVacoWnH48Pe9S4lmuvHwk7PLlq34o9ZQ0RO2IMVE0p8b5sPD1oGUwft4wDwAuYR9MKmVqX1Ra58X9jJP0pz/NZi+O01+u7mFvO3X/xM6bR77HEcC85HT5kcxe/Atgr5+7XZ5l2J7l6JE9/wjDO4Tz6E5rpT9jyhtgNWsSTJ5AOymyE7TWI2eOyPUFMEZ3AREDnEIF/6BS7cVs9q3bw2A1BF1CJ1aQIrMYtDqhQoSCI9ahABYLoQgBOKFAJUo7gYR6Uw48A7KjAEezGQZyAg0iUomwnDsEJH7rYbD/KsAt9UPGiDmyHHx5YUAsrAjCH+OGDDDPKUYUqVGID5NHzbehACCr8oCYfVOrbQvSgCuVYi3KYUdShfXejGjtxAhvmARyPtiMEDzpIzY6NMsdIFu0gFgX9DSX2vftlMkyohAlVkFENB6yQIQcdRQB+uGBFV2fJtpWzKfYesddd81QsdjgrF4XQiXJ0wQ8vKmDbzUdXYUEHggihYi8kRX8sS2iu3w/TjVtNokD+uxhGf2Kv6Iv6PNNuaY2bTDbRn6gCpPrScI4qAAAA) format('woff2');font-weight:800}.kanji{font-family:'Sceau',serif;font-weight:800}</style></defs><g id="scene">
+      <rect width="512" height="512" fill="#F3F4F0"></rect>
+      <g transform="translate(232 284) scale(1.36)">
+        <circle r="100" fill="#23282B"></circle><circle r="81.7" fill="#FFFFFF"></circle><circle r="65" fill="#23282B"></circle>
+        <circle r="56.7" fill="#FFFFFF"></circle><circle r="40" fill="#23282B"></circle><circle r="20" fill="#FFFFFF"></circle>
+      </g>
+      <!-- Ombres : une tige qui s'élargit en s'éloignant, puis la forme allongée de l'empennage. Floues et continues. -->
+      <g fill="#000000" fill-opacity="0.34" filter="url(#flou)">
+        <polygon points="234.8,286.8 237.2,285.2 298.9,374.1 293.1,377.9"></polygon>
+        <polygon points="267.1,332.7 281.3,337.7 300.2,366 296,376 285.2,376 266.3,347.7"></polygon>
+        <polygon points="298.8,330.8 301.2,329.2 356.7,409.2 351.3,412.8"></polygon>
+        <polygon points="328.5,372.7 341.3,377.5 357.9,402.4 354,411 344.5,411.2 327.9,386.3"></polygon>
+      </g>
+      <ellipse cx="236" cy="286" rx="7" ry="4.5" fill="#0E1011"></ellipse>
+      <ellipse cx="300" cy="330" rx="7" ry="4.5" fill="#0E1011"></ellipse>
+      <g stroke="#16191A" stroke-width="2.5" stroke-linejoin="round">
+        <polygon points="298.2,328.3 301.8,331.7 444.2,184.2 435.4,176" fill="#C99A4B"></polygon>
+        <polygon points="383.2,240.8 408.9,247 451.8,200.9 428.9,191.8" fill="#6B4423"></polygon>
+        <polygon points="383.2,240.8 375.3,215.6 418.2,169.5 428.9,191.8" fill="#8A5A30"></polygon>
+        <circle cx="442.5" cy="177.2" r="6" fill="#16191A"></circle>
+      </g>
+      <g stroke="#16191A" stroke-width="2.5" stroke-linejoin="round">
+        <polygon points="234.2,284.3 237.8,287.7 404.8,114.4 395.2,105.6" fill="#C99A4B"></polygon>
+        <polygon points="337.3,177.3 365.8,184.7 413.5,133.5 387.7,123.2" fill="#6B4423"></polygon>
+        <polygon points="337.3,177.3 327.8,149.3 375.5,98.1 387.7,123.2" fill="#8A5A30"></polygon>
+        <circle cx="402.7" cy="107.1" r="7" fill="#16191A"></circle>
+      </g>
+    </g><g transform="translate(84 112) rotate(-6)"><g id="tKanjiV">
+      <rect x="-40" y="-68" width="80" height="136" rx="12" fill="#F3F4F0" fill-opacity="0.9" stroke="#B23A22" stroke-width="7"></rect>
+      <text class="kanji" x="0" y="-8" font-size="54" text-anchor="middle" fill="#B23A22">皆</text>
+      <text class="kanji" x="0" y="50" font-size="54" text-anchor="middle" fill="#B23A22">中</text>
+    </g></g></svg>
