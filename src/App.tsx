@@ -1,4 +1,5 @@
 import { useRoute } from './router';
+import { usePrefs } from './i18n';
 import { TabBar } from './components/TabBar';
 import { Corrections } from './screens/Corrections';
 import { Correction } from './screens/Correction';
@@ -12,6 +13,8 @@ import { Reglages } from './screens/Reglages';
 
 export function App() {
   const [name = 'corrections', param = ''] = useRoute();
+  // Changer de langue redessine tout l'écran.
+  const { lang } = usePrefs();
   let screen: JSX.Element;
   let tab: string | null = null;
   switch (name) {
@@ -27,7 +30,7 @@ export function App() {
     default: screen = <Corrections />; tab = 'corrections';
   }
   return (
-    <div className="app">
+    <div className="app" key={lang}>
       {screen}
       {tab && <TabBar current={tab} />}
     </div>

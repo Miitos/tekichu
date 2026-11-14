@@ -1,3 +1,4 @@
+import { t } from '../i18n';
 import { nav } from '../router';
 import { activeTournoi, useStore } from '../store';
 
@@ -17,7 +18,7 @@ function Tab({ id, label, current, dot }: { id: string; label: string; current: 
         </svg>
         {dot && <span className="tab-dot" />}
       </span>
-      <span>{label}{dot ? ' · en cours' : ''}</span>
+      <span>{label}{dot ? t(' · en cours') : ''}</span>
     </button>
   );
 }
@@ -28,19 +29,19 @@ const RINGS = [32, 26.1, 20.8, 18.1, 12.8, 6.4];
 export function TabBar({ current }: { current: string }) {
   const s = useStore();
   return (
-    <nav className="tabbar" aria-label="Navigation principale">
-      <Tab id="corrections" label="Corrections" current={current} />
-      <Tab id="tournois" label="Tournois" current={current} dot={!!activeTournoi(s)} />
+    <nav className="tabbar" aria-label={t('Navigation principale')}>
+      <Tab id="corrections" label={t('Corrections')} current={current} />
+      <Tab id="tournois" label={t('Tournois')} current={current} dot={!!activeTournoi(s)} />
       <button className="tirer" onClick={() => nav('tir')}>
         <svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64">
           {RINGS.map((r, i) => (
             <circle key={r} cx="32" cy="32" r={r} className={i % 2 === 0 ? 'ring-a' : 'ring-b'} />
           ))}
         </svg>
-        <span>Tirer</span>
+        <span>{t('Tirer')}</span>
       </button>
-      <Tab id="progres" label="Progrès" current={current} />
-      <Tab id="reglages" label="Réglages" current={current} />
+      <Tab id="progres" label={t('Progrès')} current={current} />
+      <Tab id="reglages" label={t('Réglages')} current={current} />
     </nav>
   );
 }

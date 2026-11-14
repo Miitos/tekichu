@@ -236,3 +236,43 @@ input.on-dark { border: none; background: var(--dark-soft); color: var(--dark-in
 
 /* Les blocs d'un écran à onglets gardent leur hauteur : c'est l'écran qui défile, pas eux qui s'écrasent. */
 .screen.tabbed > :not(.fill) { flex-shrink: 0; }
+
+/* ---------- Thème sombre (Réglages › Apparence) ---------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #121415;
+  --page: #0a0b0c;
+  --card: #1c2022;
+  --solid: #1c2022;
+  --ink: #eceee9;
+  --muted: #a7ada8;
+  --line: #2a2f32;
+  --pale: #3b4144;
+  --strong: #6f7671;
+  --indigo: #3a679f;
+  --accent-soft: #1d2836;
+  --link: #9cbfea;
+  --red: #d2553b;
+  --red-d: #ec8a72;
+  --sand: #4b4638;
+  --mato-a: #0c0d0e;
+  --mato-b: #eeeee8;
+  --impact: #d2553b;
+  --dark-bg: #242a30;
+  --dark-ink: #f3f4f0;
+  --dark-muted: #b4bbb6;
+  --dark-soft: #343c44;
+  --dark-mid: #56616c;
+  --seg-on: #3b4144;
+  --card-border: 1px solid #262b2e;
+  --card-shadow: none;
+}
+:root[data-theme='dark'] .kaichu { background: #1c2022; }
+
+/* Japonais : un peu plus d'air entre les lignes, et pas de capitales espacées qui n'ont pas de sens ici. */
+:lang(ja) .label { letter-spacing: 0.04em; }
+
+/* Cinq colonnes strictement égales, quelle que soit la longueur des libellés (« Tournaments »). */
+.tabbar { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.tab { min-width: 0; padding: 0; white-space: nowrap; }
+.screen.tabbed { padding-bottom: 44px; }

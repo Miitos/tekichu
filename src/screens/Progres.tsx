@@ -1,9 +1,10 @@
+import { t } from '../i18n';
 import { useState } from 'react';
 import type { Session, Shot } from '../types';
 import { nav } from '../router';
 import { useStore } from '../store';
-import { avisByDay, byDateDesc, daysAgo, fmtShort, hits, pct, pctText, plural, tatsuGroups, total } from '../lib';
-import { avisLabel, stageLabel } from '../faults';
+import { avisByDay, byDateDesc, daysAgo, fmtShort, hits, hitsOf, pct, pctText, plural, tatsuGroups, total } from '../lib';
+import { avisLabel, faultLabel, stageLabel } from '../faults';
 import { Mato } from '../components/Mato';
 
 const PERIODS = [
@@ -15,14 +16,13 @@ const LEVEL: Record<string, number> = { difficile: 9, pareil: 18, mieux: 30 };
 
 function insight(shots: Shot[]): string {
   const placed = shots.filter((s) => s.x !== undefined && s.y !== undefined);
-  if (placed.length < 5) return 'Pas encore assez de positions notées';
+  if (placed.length < 5) return t('Pas encore assez de positions notées');
   const cx = placed.reduce((a, s) => a + (s.x ?? 0), 0) / placed.length;
   const cy = placed.reduce((a, s) => a + (s.y ?? 0), 0) / placed.length;
-  if (Math.hypot(cx, cy) < 0.15) return 'Groupement centré';
+  if (Math.hypot(cx, cy) < 0.15) return t('Groupement centré');
   const angle = (Math.atan2(cx, -cy) + 2 * Math.PI) % (2 * Math.PI);
   const hour = Math.round((angle / (2 * Math.PI)) * 12) % 12 || 12;
-  const haut = cy < -0.15 ? ', plutôt haut' : cy > 0.15 ? ', plutôt bas' : '';
-  return `Groupement vers ${hour} h${haut}`;
+  return t(cy < -0.15 ? 'Groupement vers {h} h, plutôt haut' : cy > 0.15 ? 'Groupement vers {h} h, plutôt bas' : 'Groupement vers {h} h', { h: hour });
 }
 
 /** Barres cliquables : une par journée ou par tournoi. */
@@ -52,10 +52,10 @@ export function Progres() {
   const jours = withShots.filter((x) => x.kind === 'cours' && x.date > from).sort((a, b) => (a.date < b.date ? -1 : 1));
   const prev = withShots.filter((x) => x.kind === 'cours' && x.date > before && x.date <= from);
   const tournois = withShots.filter((x) => x.kind === 'tournoi' && x.date > from).sort((a, b) => (a.date < b.date ? -1 : 1));
-  const t = total(jours);
+  const tj = total(jours);
   const tp = total(prev);
   const tt = total(tournois);
-  const rate = pct(t.h, t.n);
+  const rate = pct(tj.h, tj.n);
   const prevRate = pct(tp.h, tp.n);
   const delta = rate !== null && prevRate !== null ? rate - prevRate : null;
   const bars = jours.slice(-8);
@@ -75,55 +75,55 @@ export function Progres() {
   return (
     <div className="screen tabbed" style={{ gap: 12 }}>
       <div className="between">
-        <h1>Progrès</h1>
+        <h1>{t('Progrès')}</h1>
         <div className="seg">
           {PERIODS.map((p) => (
-            <button key={p.days} aria-pressed={days === p.days} onClick={() => setDays(p.days)} style={{ fontSize: 13 }}>{p.label}</button>
+            <button key={p.days} aria-pressed={days === p.days} onClick={() => setDays(p.days)} style={{ fontSize: 13 }}>{t(p.label)}</button>
           ))}
         </div>
       </div>
 
       <div className="dark" style={{ padding: 4, borderRadius: 14 }}>
         <div className="seg" style={{ background: 'none', padding: 0 }}>
-          <button aria-pressed={part === 'corrections'} onClick={() => setPart('corrections')}>Corrections</button>
-          <button aria-pressed={part === 'tournois'} onClick={() => setPart('tournois')}>Tournois</button>
+          <button aria-pressed={part === 'corrections'} onClick={() => setPart('corrections')}>{t('Corrections')}</button>
+          <button aria-pressed={part === 'tournois'} onClick={() => setPart('tournois')}>{t('Tournois')}</button>
         </div>
       </div>
 
       {part === 'corrections' && (
         <>
           {jours.length === 0 ? (
-            <div className="card empty">Aucune flèche notée sur cette période. Le bouton cible, en bas, ouvre le tir à tout moment.</div>
+            <div className="card empty">{t('Aucune flèche notée sur cette période. Le bouton cible, en bas, ouvre le tir à tout moment.')}</div>
           ) : (
             <div className="dark col" style={{ gap: 12, padding: '18px 20px 14px' }}>
               <div className="between" style={{ alignItems: 'flex-end' }}>
                 <div className="col" style={{ gap: 4 }}>
-                  <div className="label">Jours de tir</div>
-                  <div className="big" style={{ fontSize: 48 }}>{pctText(t.h, t.n)}</div>
+                  <div className="label">{t('Jours de tir')}</div>
+                  <div className="big" style={{ fontSize: 48 }}>{pctText(tj.h, tj.n)}</div>
                 </div>
                 <div className="sub" style={{ textAlign: 'right', lineHeight: 1.5 }}>
                   {delta !== null && (
                     <>
-                      <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--dark-ink)' }}>{delta > 0 ? '+' : ''}{delta} {Math.abs(delta) > 1 ? 'points' : 'point'}</span>
+                      <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--dark-ink)' }}>{delta > 0 ? '+' : ''}{t(Math.abs(delta) > 1 ? '{d} points' : '{d} point', { d: delta })}</span>
                       <br />
                     </>
                   )}
-                  {plural(jours.length, 'jour', 'jours')} · {plural(t.n, 'flèche', 'flèches')}
+                  {plural(jours.length, 'jour', 'jours')} · {plural(tj.n, 'flèche', 'flèches')}
                 </div>
               </div>
               <Bars items={bars} />
               <div className="between sub" style={{ fontSize: 12 }}>
                 <span>{fmtShort(bars[0].date)}</span>
-                <span style={{ whiteSpace: 'nowrap' }}>touche une barre</span>
+                <span style={{ whiteSpace: 'nowrap' }}>{t('touche une barre')}</span>
                 <span>{bars.length > 1 ? fmtShort(bars[bars.length - 1].date) : ''}</span>
               </div>
             </div>
           )}
 
           <div className="col">
-            <h2 className="label">Mes corrections, avis au fil des jours</h2>
+            <h2 className="label">{t('Mes corrections, avis au fil des jours')}</h2>
             {corrections.length === 0 ? (
-              <div className="card empty">Aucune correction en cours.</div>
+              <div className="card empty">{t('Aucune correction en cours.')}</div>
             ) : (
               <div className="card list">
                 {corrections.map((c) => {
@@ -131,11 +131,11 @@ export function Progres() {
                   return (
                     <button key={c.id} className="rowbtn between" onClick={() => nav(`historique/${c.id}`)}>
                       <span className="col tight">
-                        <span className="strong">{c.label}</span>
-                        <span className="sub">{steps.length === 0 ? `${stageLabel(c.stage)} · pas encore d'avis` : steps.map((e) => avisLabel(e.avis)).join(', ')}</span>
+                        <span className="strong">{faultLabel(c.label)}</span>
+                        <span className="sub">{steps.length === 0 ? `${stageLabel(c.stage)} · ${t("pas encore d'avis")}` : steps.map((e) => avisLabel(e.avis)).join(t(', '))}</span>
                       </span>
                       {steps.length > 0 && (
-                        <span className="trend" role="img" aria-label={`Dernier avis : ${avisLabel(steps[steps.length - 1].avis)}`}>
+                        <span className="trend" role="img" aria-label={t('Dernier avis : {a}', { a: avisLabel(steps[steps.length - 1].avis) })}>
                           {steps.map((e) => (
                             <u key={e.id} style={{ height: LEVEL[e.avis ?? 'pareil'] }} />
                           ))}
@@ -151,12 +151,12 @@ export function Progres() {
           {jours.length > 0 && (
             <div className="card row" style={{ gap: 14 }}>
               <div className="mini" style={{ width: 96, height: 96 }}>
-                <Mato shots={placed} label="Carte cumulée des impacts" />
+                <Mato shots={placed} label={t('Carte cumulée des impacts')} />
               </div>
               <div className="col" style={{ gap: 4 }}>
-                <div className="label">Impacts</div>
+                <div className="label">{t('Impacts')}</div>
                 <div style={{ fontSize: 16, fontWeight: 600, lineHeight: 1.25 }}>{insight(shots)}</div>
-                <div className="sub">Haya {pctText(hayaH, hayaN)} · otoya {pctText(otoH, otoN)}</div>
+                <div className="sub">{t('Haya')} {pctText(hayaH, hayaN)} · {t('otoya')} {pctText(otoH, otoN)}</div>
               </div>
             </div>
           )}
@@ -165,31 +165,31 @@ export function Progres() {
 
       {part === 'tournois' &&
         (tournois.length === 0 ? (
-          <div className="card empty">Aucun tournoi sur cette période. Le menu Tournois, en bas, permet d'en démarrer un.</div>
+          <div className="card empty">{t("Aucun tournoi sur cette période. Le menu Tournois, en bas, permet d'en démarrer un.")}</div>
         ) : (
           <>
             <div className="dark col" style={{ gap: 12, padding: '18px 20px 14px' }}>
               <div className="between" style={{ alignItems: 'flex-end' }}>
                 <div className="col" style={{ gap: 4 }}>
-                  <div className="label">En tournoi</div>
+                  <div className="label">{t('En tournoi')}</div>
                   <div className="big" style={{ fontSize: 48 }}>{pctText(tt.h, tt.n)}</div>
                 </div>
                 <div className="sub" style={{ textAlign: 'right', lineHeight: 1.5 }}>
                   {plural(tournois.length, 'tournoi', 'tournois')} · {plural(tt.n, 'flèche', 'flèches')}
                   <br />
-                  jours de tir : {pctText(t.h, t.n)}
+                  {t('jours de tir : {p}', { p: pctText(tj.h, tj.n) })}
                 </div>
               </div>
               <Bars items={tournois.slice(-8)} />
             </div>
             <div className="col">
-              <h2 className="label">Résultats et notes</h2>
+              <h2 className="label">{t('Résultats et notes')}</h2>
               <div className="card list">
                 {[...tournois].sort(byDateDesc).map((x) => (
                   <button key={x.id} className="rowbtn col" style={{ alignItems: 'stretch', gap: 4 }} onClick={() => nav(`jour/${x.id}`)}>
                     <span className="between baseline">
-                      <span className="strong">{x.name || 'Tournoi'} · {fmtShort(x.date)}</span>
-                      <span className="strong none">{hits(x.shots)} sur {x.shots.length}</span>
+                      <span className="strong">{x.name || t('Tournoi')} · {fmtShort(x.date)}</span>
+                      <span className="strong none">{t('{h} sur {n}', { h: hits(x.shots), n: x.shots.length })}</span>
                     </span>
                     {x.note && <span className="sub" style={{ lineHeight: 1.4 }}>{x.note}</span>}
                   </button>
@@ -197,8 +197,8 @@ export function Progres() {
               </div>
             </div>
             <div className="card between" style={{ fontSize: 14 }}>
-              <span>Première flèche du tournoi</span>
-              <b>{firstH} {firstH > 1 ? 'touchées' : 'touchée'} sur {tournois.length}</b>
+              <span>{t('Première flèche du tournoi')}</span>
+              <b>{hitsOf(firstH, tournois.length)}</b>
             </div>
           </>
         ))}

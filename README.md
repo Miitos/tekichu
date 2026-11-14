@@ -40,6 +40,16 @@
 
 Il n'y a pas de « séance » à démarrer ni à terminer : un jour où tu tires est une journée de travail, elle se crée toute seule.
 
+## Trois langues, deux thèmes
+
+Dans les Réglages : français, anglais ou japonais, et une apparence claire, sombre ou calée sur celle du téléphone. Les défauts et les étapes du hassetsu sont traduits eux aussi ; changer de langue ne touche à rien de ce qui est enregistré.
+
+<p align="center">
+  <img src="docs/corrections-en-sombre.png" width="24%" alt="Corrections, en anglais et en sombre" />
+  <img src="docs/tir-ja-sombre.png" width="24%" alt="Tir, en japonais et en sombre" />
+  <img src="docs/progres-ja-sombre.png" width="24%" alt="Progrès, en japonais et en sombre" />
+</p>
+
 ## Sans clavier
 
 Les défauts courants sont proposés par étape (ashibumi, dōzukuri, yugamae, uchiokoshi, hikiwake, kai, hanare, zanshin, taihai), dans l'ordre du geste. Les termes japonais ont été vérifiés sur le [dictionnaire de la fédération japonaise (ANKF)](https://www.kyudo.jp/howto/terminology.html).
@@ -65,6 +75,7 @@ npm run build      # produit dist/
 | --- | --- |
 | `src/screens/` | Un fichier par écran |
 | `src/store.ts` | L'état de l'app et son enregistrement local |
-| `src/faults.ts` | Les étapes du hassetsu et les défauts connus |
+| `src/faults.ts` | Les étapes du hassetsu et les défauts connus, avec leurs traductions |
+| `src/i18n.ts` | Langue, apparence et dictionnaire des textes (clé = texte français) |
 | `src/components/Mato.tsx` | La cible tactile |
 | `icones.html` | Le dessin de l'icône (SVG), exporté par `npm run icons` |

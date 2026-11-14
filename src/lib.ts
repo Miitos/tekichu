@@ -1,3 +1,4 @@
+import { locale, plural, t } from './i18n';
 import type { Correction, Entry, Session, Shot } from './types';
 import { avisLabel } from './faults';
 
@@ -21,16 +22,16 @@ const parse = (s: string) => new Date(s + 'T12:00:00');
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 export function fmtDate(s: string, long = false): string {
-  const f = new Intl.DateTimeFormat('fr-FR', long ? { weekday: 'long', day: 'numeric', month: 'long' } : { weekday: 'short', day: 'numeric', month: 'short' });
+  const f = new Intl.DateTimeFormat(locale(), long ? { weekday: 'long', day: 'numeric', month: 'long' } : { weekday: 'short', day: 'numeric', month: 'short' });
   return cap(f.format(parse(s)));
 }
 
 export function fmtShort(s: string): string {
-  return new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'short' }).format(parse(s));
+  return new Intl.DateTimeFormat(locale(), { day: 'numeric', month: 'short' }).format(parse(s));
 }
 
 export function fmtMonth(s: string): string {
-  return cap(new Intl.DateTimeFormat('fr-FR', { month: 'long', year: 'numeric' }).format(parse(s)));
+  return cap(new Intl.DateTimeFormat(locale(), { month: 'long', year: 'numeric' }).format(parse(s)));
 }
 
 export const hits = (shots: Shot[]) => shots.filter((s) => s.hit).length;
@@ -47,7 +48,7 @@ export function total(sessions: Session[]) {
   return { h, n };
 }
 
-export const kindLabel = (k: Session['kind']) => (k === 'cours' ? 'Jour de tir' : 'Tournoi');
+export const kindLabel = (k: Session['kind']) => t(k === 'cours' ? 'Jour de tir' : 'Tournoi');
 
 export const byDateDesc = (a: Session, b: Session) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
 
@@ -58,7 +59,7 @@ export function tatsuGroups(shots: Shot[], size: number): Shot[][] {
 }
 
 export function entryText(e: Entry): string {
-  const base = e.type === 'avis' ? avisLabel(e.avis) : e.type === 'origine' ? 'correction donnée' : 'note';
+  const base = e.type === 'avis' ? avisLabel(e.avis) : t(e.type === 'origine' ? 'correction donnée' : 'note');
   return e.text ? `${base} · ${e.text}` : base;
 }
 
@@ -79,6 +80,7 @@ export function avisByDay(c: Correction): Entry[] {
   return [...byDate.values()].sort((a, b) => (a.date < b.date ? -1 : 1));
 }
 
-export function plural(n: number, one: string, many: string): string {
-  return `${n} ${n > 1 ? many : one}`;
-}
+export { plural };
+
+/** « 7 touchées sur 8 », « 7 hits out of 8 », « 8射7中 ». */
+export const hitsOf = (h: number, n: number) => t(h > 1 ? '{h} touchées sur {n}' : '{h} touchée sur {n}', { h, n });
