@@ -233,3 +233,6 @@ input.on-dark { border: none; background: var(--dark-soft); color: var(--dark-in
 /* Un libellé long passe à la ligne au lieu de dépasser de l'écran. */
 .col.fill { overflow-x: hidden; }
 .chips:not(.scroll) .chip { flex: 0 1 auto; max-width: 100%; line-height: 1.25; }
+
+/* Les blocs d'un écran à onglets gardent leur hauteur : c'est l'écran qui défile, pas eux qui s'écrasent. */
+.screen.tabbed > :not(.fill) { flex-shrink: 0; }

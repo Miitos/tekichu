@@ -114,7 +114,7 @@ export function Progres() {
               <Bars items={bars} />
               <div className="between sub" style={{ fontSize: 12 }}>
                 <span>{fmtShort(bars[0].date)}</span>
-                <span>touche une barre pour voir la journée</span>
+                <span style={{ whiteSpace: 'nowrap' }}>touche une barre</span>
                 <span>{bars.length > 1 ? fmtShort(bars[bars.length - 1].date) : ''}</span>
               </div>
             </div>

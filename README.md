@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://kyudo-carnet.pages.dev"><img src="https://img.shields.io/badge/Ouvrir_l'app-1F3D66?style=for-the-badge" alt="Ouvrir l'app" /></a>
+  <a href="https://tekichu.pages.dev"><img src="https://img.shields.io/badge/Ouvrir_l'app-1F3D66?style=for-the-badge" alt="Ouvrir l'app" /></a>
 </p>
 
 <p align="center">
